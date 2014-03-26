@@ -1,0 +1,14 @@
+*.pyc
+*.mp4
+*.db
+*.swp
+django.log
+/mediadata/
+/.settings/
+/.project
+/.pydevproject
+/.ropeproject
+/.settings
+.DS_Store
+.sass-cache
+
