@@ -1,6 +1,8 @@
+South==0.8.4
 Django==1.6.2
-aiohttp==0.6.4
-autobahn==0.8.6
 ipdb==0.8
 ipython==1.2.1
+sockjs-tornado==1.0.0
+tornado==3.2
+psycopg2==2.5.2
 

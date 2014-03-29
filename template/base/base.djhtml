@@ -1,0 +1,15 @@
+{% load i18n %}
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8"> <![endif]-->
+<!--[if gt IE 8]<!-->
+<html>
+<!--<![endif]-->
+    <head>
+    </head>
+    <body id="{% block page_id %}{% endblock %}"
+        <div id="app">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

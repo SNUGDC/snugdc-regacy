@@ -2,42 +2,35 @@
 import os
 import asyncio
 from django.core.wsgi import get_wsgi_application
-from aiohttp.wsgi import WSGIServerHttpProtocol
+import tornado
+import tornado.ioloop
+import tornado.web
+import tornado.wsgi
 import argparse
+from sockjs.tornado import SockJSRouter
+from tornado.platform.asyncio import AsyncIOMainLoop
+from snugdc.sockjs import SNUGDCConnection
 
 # Parse arguments
 ARGS = argparse.ArgumentParser(description="Run simple http server.")
 ARGS.add_argument(
-    '--host', action="store", dest='host',
-    default='0.0.0.0', help='Host name')
-ARGS.add_argument(
     '--port', action="store", dest='port',
     default=8008, type=int, help='Port number')
 args = ARGS.parse_args()
-if ':' in args.host:
-    args.host, port = args.host.split(':', 1)
-    args.port = int(port)
 
 def main():
     # Create Django WSGI App
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "blackboard.settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "snugdc.settings")
     django_app = get_wsgi_application()
+    wsgi_app = tornado.wsgi.WSGIContainer(django_app)
 
-    # Get event loop and
-    loop = asyncio.get_event_loop()
-    
-    # Run!
-    wsgi_server = lambda: WSGIServerHttpProtocol(django_app)
-    f = loop.create_server(wsgi_server, args.host, args.port)
-    svr = loop.run_until_complete(f)
+    sockjs_router = SockJSRouter(SNUGDCConnection, '/ws')
+    wsgi_urls = [('.*', tornado.web.FallbackHandler, dict(fallback=wsgi_app))]
+    app = tornado.web.Application(sockjs_router.urls + wsgi_urls)
+    app.listen(args.port)
+    tornado.ioloop.IOLoop.configure('tornado.platform.asyncio.AsyncIOLoop')
+    tornado.ioloop.IOLoop.instance().start()
 
-    socks = svr.sockets
-    print('serving on', socks[0].getsockname())
-    try:
-        loop.run_forever()
-    except KeyboardInterrupt:
-        pass
 
 if __name__ == '__main__':
     main()
-

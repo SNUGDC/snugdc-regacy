@@ -3,6 +3,7 @@
 *.db
 *.swp
 django.log
+src/local
 /mediadata/
 /.settings/
 /.project
@@ -11,4 +12,5 @@ django.log
 /.settings
 .DS_Store
 .sass-cache
+__pycache__
 

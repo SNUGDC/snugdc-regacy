@@ -1,5 +1,5 @@
 """
-Django settings for blackboard project.
+Django settings for snugdc project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -10,8 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -22,10 +21,38 @@ SECRET_KEY = '8z^-b5#@qs2w2ajvbeg^7p^o-i0905h@)co4z-$bd8giv**pgo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = []
 
+ADMINS = (
+    ('snugdc', 'snugdc@gmail.com'),
+)
+MANAGERS = ADMINS
+SERVER_EMAIL = 'snugdc@gmail.com'
+
+# STATIC & MEDIA
+# https://docs.djangoproject.com/en/1.6/howto/static-files/
+STATIC_ROOT = ""
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATICFILES_FINDERS = ('djangobower.finders.BowerFinder',)
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+# TEMPLATE
+TEMPLATE_DEBUG = True
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'template'),
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.static",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request"
+)
 
 # Application definition
 
@@ -36,6 +63,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'member',
+    'south'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -47,10 +76,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'blackboard.urls'
-
-WSGI_APPLICATION = 'blackboard.wsgi.application'
-
+ROOT_URLCONF = 'snugdc.urls'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
@@ -76,7 +102,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
-
-STATIC_URL = '/static/'
+try:
+    from local.settings import *
+except:
+    pass
