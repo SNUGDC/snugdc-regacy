@@ -1,5 +1,60 @@
 {% extends "base/base.djhtml" %}
 {% block page_id%}member-index{% endblock %}
 {% block content %}
-Hello World
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">SNUGDC</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Games</a></li>
+                <li><a href="/member">Members</a></li>
+                <li><a href="#">Contact us</a></li>
+            </ul>
+        </div><!-- /.container-fluid -->
+    </div>
+</nav>
+<div class="member-container">
+    <div class="carousel slide" data-ride="carousel" data-interval="2000">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            {% for member in members %}
+            <div class="item{% if forloop.first %} active{% endif %}">
+                <img src="{{ member.image }}" />
+                <div class="carousel-caption">
+                    <h3>{{ member.title }} {{ member.username }} </h3>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+</div>
+<div class="member-curation">
+</div>
 {% endblock %}

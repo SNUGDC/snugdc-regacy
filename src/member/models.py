@@ -10,12 +10,17 @@ __all__ = ('Member',)
 
 
 class MemberManager(BaseUserManager):
-    def create_user(self, username, password=None):
+    def create_user(self, username, title, image):
         if not username:
             raise ValueError('Users must have a username')
         user = self.model(
             username=username
         )
+        if title:
+            user.title = title
+        if image:
+            user.image = image
+        user.is_admin = False
         user.save(using=self._db)
         return user
 
@@ -25,11 +30,6 @@ class Member(AbstractBaseUser):
     title = models.CharField(max_length=254, blank=False, null=True)
     is_admin = models.BooleanField(default=False)
     image = models.URLField(null=True)
-    email = models.EmailField(
-        verbose_name='email address',
-        max_length=255,
-        null=True
-    )
     objects = MemberManager()
 
     USERNAME_FIELD = 'username'
@@ -42,7 +42,7 @@ class Member(AbstractBaseUser):
         return self.username
 
     def __str__(self):
-        return self.email
+        return self.username
 
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"
