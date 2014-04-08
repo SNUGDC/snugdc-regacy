@@ -1,0 +1,5 @@
+{% extends "base/base.djhtml" %}
+{% block page_id%}index{% endblock %}
+{% block content %}
+
+{% endblock %}

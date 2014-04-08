@@ -5,4 +5,5 @@ ipython==1.2.1
 sockjs-tornado==1.0.0
 tornado==3.2
 psycopg2==2.5.2
+djangorestframework==2.3.13
 
