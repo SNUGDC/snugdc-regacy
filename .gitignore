@@ -4,7 +4,7 @@
 *.swp
 django.log
 src/local
-/mediadata/
+/media/
 /.settings/
 /.project
 /.pydevproject

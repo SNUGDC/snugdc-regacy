@@ -10,10 +10,10 @@ urlpatterns = patterns(
     '',
     # Examples:
     # url(r'^blog/', include('blog.urls')),
-    url(r'^$', HomeView.as_view(), name='home'),
+    url(r'^$', HomeView.as_view(), name='index'),
     url(r'^about/$', AboutView.as_view(), name='about'),
-    url(r'^contact/$', AboutView.as_view(), name='contact'),
-    url(r'^member/$', include('member.urls', namespace='member')),
-    url(r'^game/$', include('game.urls', namespace='game')),
+    #url(r'^member/$', include('member.urls', namespace='member')),
+    url(r'^game/', include('game.urls', namespace='game')),
     url(r'^admin/', include(admin.site.urls)),
-) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
+    + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

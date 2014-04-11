@@ -1,5 +1,39 @@
 {% extends "base/base.djhtml" %}
 {% block page_id%}game-index{% endblock %}
 {% block content %}
-
+<div class="container">
+    <div id="freewall-container">
+        {% for game in games %}
+        <a href="{% url 'game:item' game.pk %}">
+            <div class="item">
+                <img src="{{ game.image.url }}" />
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+<script>
+    $('.item').each(function(idx, el) {
+    var w = 1 + 3 * Math.random() << 0;
+    $(el).css('width', 200 * w);
+    });
+    var wall = new freewall('#freewall-container');
+    wall.reset({
+    selector: '.item',
+    animate: true,
+    cellW: 200,
+    cellH: 'auto',
+    onResize: function() {
+    wall.fitWidth();
+    }
+    });
+    var images = wall.container.find('.item');
+    var length = images.length;
+    images.find('img').load(function() {
+    -- length;
+    if (!length) {
+    wall.fitWidth();
+    }
+    });
+</script>
 {% endblock %}

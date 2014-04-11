@@ -1,5 +1,0 @@
-{% extends "base/base.djhtml" %}
-{% block page_id%}contact{% endblock %}
-{% block content %}
-
-{% endblock %}
