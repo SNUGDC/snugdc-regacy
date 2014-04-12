@@ -1,3 +1,22 @@
+body,
+input,
+button,
+select,
+textarea,
+.navbar-search .search-query {
+  font-family: "Nanum Gothic" , sans-serif;
+}
+
+.border-radius (@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius:    @radius;
+  border-radius:         @radius;
+
+  -moz-background-clip:    padding;
+  -webkit-background-clip: padding-box;
+  background-clip:         padding-box;
+}
+
 #member-index {
   .member-container {
     .carousel {
@@ -9,25 +28,53 @@
     }
   }
 }
-#game-index {
-  #freewall-container {
-    .item {
-      float: left;
-      overflow: hidden;
-      img {
-        width: 100%;
-        margin: 0;
-        display: block;
+
+.game-name {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+.game-item {
+  .game-image-container {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 100%;
+    margin-right: 10px;
+    @media (max-width: 991px) {
+      max-width: 700px;
+    }
+    max-width: 450px;
+    .game-image {
+      width: 100%;
+    }
+    margin-bottom: 15px;
+  }
+  .game-info {
+    max-width: 380px;
+    label {
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+    @media (max-width: 991px) {
+      max-width: 700px;
+    }
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+    .game-participation {
+      .member-image {
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+        background-size: cover;
       }
     }
-  }
-}
-#game-item {
-  .row {
-    width: 800px;
-    margin: auto;
-    * {
-      text-align: center;
+    .download-link {
+      i {
+        font-size: 40px;
+        display: inline-block;
+      }
     }
   }
 }

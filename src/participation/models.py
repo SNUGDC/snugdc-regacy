@@ -14,3 +14,6 @@ class Participation(models.Model):
 
     class Meta:
         unique_together = ('member', 'game')
+
+    def __str__(self):
+        return self.member.name + " - " + self.game.name

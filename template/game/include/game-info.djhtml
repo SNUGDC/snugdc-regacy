@@ -1,0 +1,34 @@
+<div class="game-info">
+    <label>게임 소개</label>
+    <div class="game-description">
+        {% autoescape off %}
+        <p>{{ game.description }}</p>
+        {% endautoescape %}
+    </div>
+    <label>장르</label>
+    <div class="game-genre">
+        <p>
+        {% for genre in game.genre_set.all %}
+        {{ genre.name }}
+        {% endfor %}
+        </p>
+    </div>
+    <label>참여 인원</label>
+    <div class="game-participation">
+        {% for participation in game.participation_set.all %}
+        <div class="member-image img-rounded"
+             style="background-image:url('{{ participation.member.image.url }}');">
+        </div>
+        {% endfor %}
+    </div>
+    <label>다운로드</label>
+    <div class="download-link">
+        {% for downloadtype in game.downloadtype_set.all %}
+        <a href="{{ downloadtype.link }}">
+            {% if downloadtype.platform == 'AND' %}
+            <i class="fa fa-android"></i>
+            {% endif %}
+        </a>
+        {% endfor %}
+    </div>
+</div>

@@ -1,26 +1,11 @@
-{% load staticfiles %}
 <!DOCTYPE html>
 <!--[if IE 8]> <html class="ie8"> <![endif]-->
 <!--[if gt IE 8]<!-->
 <html>
     <!--<![endif]-->
     <head>
-        <link rel="stylesheet/less" type="text/css"
-              href="{% static 'less/style.less' %}" />
-        <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.0/less.min.js"></script>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
-
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="http://cdn.jsdelivr.net/bootflat/2.0.0/css/bootflat.css" />
-
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="//cdn.jsdelivr.net/jquery.freewall/1.02/freewall.min.js"></script>
+        {% include "base/include/css.djhtml" %}
+        {% include "base/include/js.djhtml" %}
     </head>
     <body id="{% block page_id %}{% endblock %}">
         {% include "base/include/header.djhtml" %}
