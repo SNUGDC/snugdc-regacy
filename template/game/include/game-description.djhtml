@@ -1,0 +1,20 @@
+<div class="game-description game-info">
+    <div class="control">
+        <label>게임 소개</label>
+        <div class="">
+            {% autoescape off %}
+            <p>{{ game.description }}</p>
+            {% endautoescape %}
+        </div>
+    </div>
+    <div class="control">
+        <label>장르</label>
+        <div class="game-genre">
+            <p>
+                {% for genre in game.genre_set.all %}
+                {{ genre.name }}
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+</div>

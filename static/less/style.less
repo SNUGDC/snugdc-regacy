@@ -30,14 +30,14 @@ textarea,
 }
 
 .game-name {
-  font-size: 20px;
+  font-size: 28px;
   font-weight: bold;
   text-align: center;
 }
 .game-item {
   .game-image-container {
     display: inline-block;
-    vertical-align: bottom;
+    vertical-align: top;
     width: 100%;
     margin-right: 10px;
     @media (max-width: 991px) {
@@ -51,17 +51,19 @@ textarea,
   }
   .game-info {
     max-width: 380px;
-    label {
-      font-size: 16px;
-      font-weight: bold;
-      margin-top: 5px;
-    }
     @media (max-width: 991px) {
       max-width: 700px;
     }
     width: 100%;
     display: inline-block;
     vertical-align: top;
+    .control {
+      label {
+        font-size: 16px;
+        font-weight: bold;
+      }
+      margin-bottom: 20px;
+    }
     .game-participation {
       .member-image {
         display: inline-block;

@@ -9,30 +9,7 @@
              data-target=".game-item-{{ game.pk }}">
             <img src="{{ game.image.url }}" />
         </div>
-
-        <div class="modal fade game-item game-item-{{ game.pk }}"
-             tabindex="-1" role="dialog"
-             aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button"
-                                class="close"
-                                data-dismiss="modal"
-                                aria-hidden="true">×</button>
-                        <h4 class="modal-title game-name">
-                            {{ game.name }}
-                        </h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="game-image-container">
-                            <img class="game-image" src="{{ game.image.url }}" />
-                        </div>
-                        {% include "game/include/game-info.djhtml" %}
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% include "game/include/game-detail.djhtml" with game=game %}
         {% endfor %}
     </div>
 </div>
