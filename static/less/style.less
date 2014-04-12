@@ -29,28 +29,48 @@ textarea,
   }
 }
 
-.game-name {
-  font-size: 28px;
-  font-weight: bold;
-  text-align: center;
-}
 .game-item {
-  .game-image-container {
-    display: inline-block;
-    vertical-align: top;
+  .modal-body {
+    padding: 20px 50px;
+  }
+  .game-detail {
     width: 100%;
     margin-right: 10px;
-    @media (max-width: 991px) {
-      max-width: 700px;
+    & > * {
+      vertical-align: top;
     }
-    max-width: 450px;
     .game-image {
+      max-width: 400px;
       width: 100%;
+      margin-right: 20px;
+    }
+    .visible-tablet {
+      display: inline-block;
+    }
+    .hidden-tablet {
+      display: none;
+    }
+    @media (max-width: 992px) {
+      .game-image {
+        max-width: 700px;
+        margin-right: 0;
+      }
+      .visible-tablet {
+        display: none;
+      }
+      .hidden-tablet {
+        display: block;
+      }
+    }
+    .game-name {
+      font-size: 28px;
+      text-align: center;
+      margin-top: 0px;
     }
     margin-bottom: 15px;
   }
   .game-info {
-    max-width: 380px;
+    max-width: 360px;
     @media (max-width: 991px) {
       max-width: 700px;
     }
@@ -58,11 +78,11 @@ textarea,
     display: inline-block;
     vertical-align: top;
     .control {
+      margin: 20px 0;
       label {
         font-size: 16px;
         font-weight: bold;
       }
-      margin-bottom: 20px;
     }
     .game-participation {
       .member-image {

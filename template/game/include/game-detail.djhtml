@@ -1,23 +1,40 @@
-<div class="modal fade game-item game-item-{{ game.pk }}"
-     tabindex="-1" role="dialog"
-     aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button"
-                        class="close"
-                        data-dismiss="modal"
-                        aria-hidden="true">×</button>
-                <h4 class="modal-title game-name">
-                    {{ game.name }}
-                </h4>
+<div class="game-detail">
+    <h4 class="game-name hidden-tablet">
+        {{ game.name }}
+    </h4>
+    <img class="game-image" src="{{ game.image.url }}" />
+    <div class="game-info">
+        <h4 class="game-name visible-tablet">
+            {{ game.name }}
+        </h4>
+        <div class="control">
+            <label>다운로드</label>
+            <div class="download-link">
+                {% for downloadtype in game.downloadtype_set.all %}
+                <a href="{{ downloadtype.link }}">
+                    {% if downloadtype.platform == 'WIN' %}
+                    <i class="fa fa-windows"></i>
+                    {% elif downloadtype.platform == 'WEB' %}
+                    <i class="fa-laptop"></i>
+                    {% elif downloadtype.platform == 'IOS' %}
+                    <i class="fa fa-apple"></i>
+                    {% elif downloadtype.platform == 'AND' %}
+                    <i class="fa fa-android"></i>
+                    {% elif downloadtype.platform == 'ETC' %}
+                    <i class="fa-linux"></i>
+                    {% endif %}
+                </a>
+                {% endfor %}
             </div>
-            <div class="modal-body">
-                <div class="game-image-container">
-                    <img class="game-image" src="{{ game.image.url }}" />
+        </div>
+        <div class="control">
+            <label>참여 인원</label>
+            <div class="game-participation">
+                {% for participation in game.participation_set.all %}
+                <div class="member-image img-rounded"
+                     style="background-image:url('{{ participation.member.image.url }}');">
                 </div>
-                {% include "game/include/game-description.djhtml" %}
-                {% include "game/include/game-info.djhtml" %}
+                {% endfor %}
             </div>
         </div>
     </div>

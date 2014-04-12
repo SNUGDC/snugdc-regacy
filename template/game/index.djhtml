@@ -9,7 +9,7 @@
              data-target=".game-item-{{ game.pk }}">
             <img src="{{ game.image.url }}" />
         </div>
-        {% include "game/include/game-detail.djhtml" with game=game %}
+        {% include "game/include/game-item.djhtml" with game=game %}
         {% endfor %}
     </div>
 </div>
