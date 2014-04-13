@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 from django.db import models
 
-__all__ = ('Game', 'DownloadType')
+__all__ = ('Game', 'DownloadType', 'Snapshot', 'Genre')
 
 
 class Genre(models.Model):
@@ -22,6 +22,12 @@ class Game(models.Model):
     def __str__(self):
         return self.name
 
+class Snapshot(models.Model):
+    game = models.ForeignKey(Game)
+    image = models.ImageField(upload_to='image/game/snapshot', max_length=500)
+
+    def __str__(self):
+        return self.game.name
 
 GAME_TYPE_CHOISES = (
     ('MAC', 'Mac OS X'),
