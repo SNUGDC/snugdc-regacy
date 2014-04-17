@@ -7,6 +7,7 @@
         <h4 class="game-name visible-tablet">
             {{ game.name }}
         </h4>
+        {% include "game/include/game-snapshot.djhtml" with visible_state="hidden-tablet" %}
         <div class="control">
             <label>다운로드</label>
             <div class="download-link">

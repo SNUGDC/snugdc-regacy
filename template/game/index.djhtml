@@ -1,12 +1,13 @@
 {% extends "base/base.djhtml" %}
 {% block page_id%}game-index{% endblock %}
 {% block content %}
+
 <div class="container">
     <div id="freewall-container">
         {% for game in games %}
         <div class="item"
              data-toggle="modal"
-             data-target=".game-item-{{ game.pk }}">
+             data-target="#game-item-{{ game.pk }}">
             <img src="{{ game.image.url }}" />
         </div>
         {% include "game/include/game-item.djhtml" with game=game %}
@@ -36,6 +37,10 @@
     if (!length) {
     wall.fitWidth();
     }
+    });
+
+    $( document ).ready(function() {
+    $('.carousel').carousel();
     });
 </script>
 {% endblock %}

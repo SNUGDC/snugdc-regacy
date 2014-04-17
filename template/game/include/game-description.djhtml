@@ -1,4 +1,5 @@
 <div class="game-description">
+    {% include "game/include/game-snapshot.djhtml" with visible_state="visible-tablet" %}
     <div class="control">
         <label>게임 소개</label>
         <div class="">

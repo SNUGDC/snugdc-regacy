@@ -1,0 +1,11 @@
+<div class="control {{ visible_state }}">
+    <label>스크린샷</label>
+    <div class="snapshot-wrapper">
+        <!-- Wrapper for slides -->
+        {% for snapshot in game.snapshot_set.all %}
+        <div class="snapshot">
+            <img src="{{ snapshot.image.url }}" class="snapshot-image" />
+        </div>
+        {% endfor %}
+    </div>
+</div>

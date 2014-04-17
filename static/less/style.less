@@ -1,3 +1,4 @@
+//Font Style
 body,
 input,
 button,
@@ -6,32 +7,43 @@ textarea,
 .navbar-search .search-query {
   font-family: "Nanum Gothic" , sans-serif;
 }
-
-.border-radius (@radius: 5px) {
-  -webkit-border-radius: @radius;
-  -moz-border-radius:    @radius;
-  border-radius:         @radius;
-
-  -moz-background-clip:    padding;
-  -webkit-background-clip: padding-box;
-  background-clip:         padding-box;
+//Container Style
+.visible-tablet {
+  display: inline-block;
 }
-
-#member-index {
-  .member-container {
-    .carousel {
-      .carousel-inner .item img {
-        width: 400px;
-        height: 500px;
-        margin: auto;
-      }
-    }
+.hidden-tablet {
+  display: none;
+}
+@media (max-width: 992px) {
+  .visible-tablet {
+    display: none;
+  }
+  .hidden-tablet {
+    display: block;
   }
 }
 
+//Game Page Style
 .game-item {
   .modal-body {
     padding: 20px 50px;
+  }
+  .snapshot-wrapper {
+    overflow: auto;
+    white-space: nowrap;
+    .snapshot {
+      display: inline-block;
+      float: inherit;
+      white-space: normal;
+      .snapshot-image {
+        height: 200px;
+        width: auto;
+      }
+      margin-right: 10px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
   .game-detail {
     width: 100%;
@@ -45,22 +57,11 @@ textarea,
       width: 100%;
       margin-right: 20px;
     }
-    .visible-tablet {
-      display: inline-block;
-    }
-    .hidden-tablet {
-      display: none;
-    }
     @media (max-width: 992px) {
       .game-image {
         max-width: 700px;
         margin-right: 0;
-      }
-      .visible-tablet {
-        display: none;
-      }
-      .hidden-tablet {
-        display: block;
+        margin: 30px 0;
       }
     }
     .game-name {
@@ -72,6 +73,7 @@ textarea,
   }
   .control {
     margin: 20px 0;
+    width: 100%;
     label {
       font-size: 16px;
       font-weight: bold;

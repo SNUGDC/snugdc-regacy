@@ -1,11 +1,11 @@
-<div class="modal fade game-item game-item-{{ game.pk }}"
+<div id="game-item-{{ game.pk }}" class="modal fade game-item"
      tabindex="-1" role="dialog"
      aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-body">
-                {% include "game/include/game-detail.djhtml" %}
-                {% include "game/include/game-description.djhtml" %}
+                {% include "game/include/game-detail.djhtml" with game=game %}
+                {% include "game/include/game-description.djhtml" with game=game %}
             </div>
         </div>
     </div>
