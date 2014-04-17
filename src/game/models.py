@@ -13,11 +13,19 @@ class Genre(models.Model):
         return self.name
 
 
+GAME_QUALITY_CHOISES = (
+    ('L', 'Low'),
+    ('M', 'SoSo'),
+    ('H', 'High'),
+)
+
 class Game(models.Model):
     name = models.CharField(max_length=254, blank=False)
     image = models.ImageField(upload_to='image/game', max_length=500)
     description = models.CharField(max_length=2000, blank=False)
     genre_set = models.ManyToManyField(Genre, null=True)
+    quality = models.CharField(max_length=1, default='L',
+                               choices=GAME_QUALITY_CHOISES)
 
     def __str__(self):
         return self.name

@@ -5,7 +5,7 @@
 
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
-<script src="//cdn.jsdelivr.net/jquery.freewall/1.02/freewall.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.2/masonry.pkgd.min.js"></script>
 
 <script type="text/javascript">
   WebFontConfig = {

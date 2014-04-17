@@ -16,7 +16,7 @@
                     {% if downloadtype.platform == 'WIN' %}
                     <i class="fa fa-windows"></i>
                     {% elif downloadtype.platform == 'WEB' %}
-                    <i class="fa-laptop"></i>
+                    <i class="fa fa-laptop"></i>
                     {% elif downloadtype.platform == 'IOS' %}
                     <i class="fa fa-apple"></i>
                     {% elif downloadtype.platform == 'AND' %}
