@@ -1,13 +1,13 @@
 <div class="game-detail">
-    <h4 class="game-name hidden-tablet">
+    <h4 class="game-name visible-xs visible-sm">
         {{ game.name }}
     </h4>
     <img class="game-image" src="{{ game.image.url }}" />
     <div class="game-info">
-        <h4 class="game-name visible-tablet">
+        <h4 class="game-name hidden-xs hidden-sm">
             {{ game.name }}
         </h4>
-        {% include "game/include/game-snapshot.djhtml" with visible_state="hidden-tablet" %}
+        {% include "game/include/game-snapshot.djhtml" with visible_state="visible-xs visible-sm" %}
         <div class="control">
             <label>다운로드</label>
             <div class="download-link">
