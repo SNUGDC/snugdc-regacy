@@ -6,6 +6,7 @@
     <head>
         {% include "base/include/css.djhtml" %}
         {% include "base/include/js.djhtml" %}
+        {% include "base/include/meta.djhtml" %}
     </head>
     <body id="{% block page_id %}{% endblock %}">
         {% include "base/include/header.djhtml" %}
