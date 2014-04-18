@@ -4,6 +4,8 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-body">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">&times;</button>
                 {% include "game/include/game-detail.djhtml" with game=game %}
                 {% include "game/include/game-description.djhtml" with game=game %}
             </div>
