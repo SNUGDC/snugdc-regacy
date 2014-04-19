@@ -1,5 +1,7 @@
 {% extends "base/base.djhtml" %}
 {% block page_id%}index{% endblock %}
 {% block content %}
-
+<div class="container">
+    <div class="main-title"></div>
+</div>
 {% endblock %}

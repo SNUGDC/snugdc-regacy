@@ -2,7 +2,7 @@
     {% include "game/include/game-snapshot.djhtml" with visible_state="hidden-xs hidden-sm" %}
     <div class="control">
         <label>게임 소개</label>
-        <div class="">
+        <div>
             {% autoescape off %}
             <p>{{ game.description }}</p>
             {% endautoescape %}
